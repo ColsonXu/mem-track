@@ -44,7 +44,7 @@ int main() {
             clear();
             printw("Available Memory Statistics:\n");
             printw("%-15s %-15s %-15s %-15s\n", "Current (GB)", "Min (GB)", "Max (GB)", "Average (GB)");
-            printw("%-15.2f %-15.2f %-15.2f %-15.2f\n", mem_avail_gb, min, max, avg);
+            printw("%-15.1f %-15.1f %-15.1f %-15.1f\n", mem_avail_gb, min, max, avg);
             refresh();
 
             for (int i = 0; i < DELAY / 100; i++) {
@@ -64,12 +64,12 @@ int main() {
         }
         mem_info.close();
     }
+
     endwin();
 
-    printw("Final Available Memory Statistics:\n");
-    printw("%-15s %-15s %-15s %-15s\n", "Current (GB)", "Min (GB)", "Max (GB)", "Average (GB)");
-    printw("%-15.2f %-15.2f %-15.2f %-15.2f\n", total / count, min, max, avg);
-    refresh();
+    cout << "Final Memory Usage Statistics:" << endl;
+    cout << left << setw(15) << "Min (GB)" << setw(15) << "Max (GB)" << setw(15) << "Average (GB)" << endl;
+    cout << fixed << setprecision(2) << setw(15) << min << setw(15) << max << setw(15) << avg << endl;
     log.close();
 
     return 0;
